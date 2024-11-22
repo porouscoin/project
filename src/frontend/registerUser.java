@@ -95,6 +95,11 @@ public class registerUser extends JFrame {
 		            JOptionPane.showMessageDialog(null, "All fields are required!", "Error", JOptionPane.ERROR_MESSAGE);
 		            return;
 		        }
+		        
+		        if (!email.contains("@") || !email.contains(".edu") || email.indexOf(".edu") < email.indexOf("@")) {
+		            JOptionPane.showMessageDialog(null, "Invalid email!", "Error", JOptionPane.ERROR_MESSAGE);
+		            return;
+		        }
 
 		        // Check if username or email is already taken
 		        GuideAndSeek g = GuideAndSeek.getInstance();
