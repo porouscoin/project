@@ -101,6 +101,9 @@ public class userLogin extends JFrame {
                 // Use GuideAndSeek's login method to authenticate
                 GuideAndSeek app = GuideAndSeek.getInstance();
                 if (app.login(username, password)) {
+                	User u = app.getUserByUsername(username);
+                	UserSession us = UserSession.getInstance();
+                	us.setUser(u);
                     dispose(); // Close the login frame
                     homepage h1 = new homepage(); // Navigate to the homepage
                     h1.setVisible(true);

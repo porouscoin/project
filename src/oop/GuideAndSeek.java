@@ -75,6 +75,11 @@ public class GuideAndSeek {
     	db.save(u);
     }
     
+    public void addFeedback(Feedback f) {
+    	db.save(f);
+    }
+    
+    
     public boolean login(String username, String password) {
         ResultSet rs = null;
         try {
@@ -141,4 +146,49 @@ public class GuideAndSeek {
         }
         return false; // No duplicate found
     }
+    
+    public User getUserByUsername(String username) {
+        ResultSet rs = null;
+        try {
+            // Fetch user record from the 'users' table by username
+            rs = db.fetch("user", "username", username);
+
+            if (rs != null && rs.next()) {
+            	int userID = rs.getInt("userID");
+                String email = rs.getString("email");
+                String password = rs.getString("password");
+                String name = rs.getString("name");
+                String bio = rs.getString("bio");
+                String profilePic = rs.getString("profilePic");
+                String contactInfo = rs.getString("contactInfo");
+
+                // Construct and return a User object based on the retrieved data
+                return new User(userID, username, email, password, name, bio, profilePic, contactInfo);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        // Return null if user not found or an error occurs
+        return null;
+    }
+    
+    public int saveFeedback(Feedback feedback) {
+        // Call the save function of MySQLDBHandler
+        return db.save(feedback);
+    }
+
+    // Method to save TeacherFeedback
+    public int saveTeacherFeedback(TeacherFeedback teacherFeedback) {
+        // Call the save function of MySQLDBHandler
+        return db.save(teacherFeedback);
+    }
+
+    // Method to save CourseFeedback
+    public int saveCourseFeedback(CourseFeedback courseFeedback) {
+        // Call the save function of MySQLDBHandler
+        return db.save(courseFeedback);
+    }
+    
+    
+    
 }

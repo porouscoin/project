@@ -1,7 +1,7 @@
 package oop;
 
 public class User {
-    private String userID;
+    private int userID;
     private String username;
     private String email;
     private String password;
@@ -10,7 +10,7 @@ public class User {
     private String profilePic;
     private String contactInfo;
 
-    public User(String userID, String username, String email, String password, String name, String bio, String profilePic, String contactInfo) {
+    public User(int userID, String username, String email, String password, String name, String bio, String profilePic, String contactInfo) {
         this.userID = userID;
         this.username = username;
         this.email = email;
@@ -26,11 +26,11 @@ public class User {
     	return true;
     }
     // Getters and setters
-    public String getUserID() {
+    public int getUserID() {
         return userID;
     }
 
-    public void setUserID(String userID) {
+    public void setUserID(int userID) {
         this.userID = userID;
     }
 

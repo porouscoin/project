@@ -1,11 +1,11 @@
 package oop;
 
 public class CourseFeedback extends Feedback {
-    private String courseID;
+    private int courseID;
     private String courseName;
 
-    public CourseFeedback(String feedbackID, int rating, String courseID, String courseName) {
-        super(feedbackID, rating);
+    public CourseFeedback(int feedbackID, int rating, int courseID, String courseName, int userID, String review) {
+        super(feedbackID, rating, userID, review);
         this.courseID = courseID;
         this.courseName = courseName;
     }
@@ -16,11 +16,11 @@ public class CourseFeedback extends Feedback {
     }
 
     // Getters and setters
-    public String getCourseID() {
+    public int getCourseID() {
         return courseID;
     }
 
-    public void setCourseID(String courseID) {
+    public void setCourseID(int courseID) {
         this.courseID = courseID;
     }
 

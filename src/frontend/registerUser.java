@@ -109,11 +109,8 @@ public class registerUser extends JFrame {
 		            return; // Exit the registration process
 		        }
 
-		        // Generate a unique userID
-		        String userID = java.util.UUID.randomUUID().toString();
-
 		        // Create the User object
-		        User newUser = new User(userID, username, email, password, fullName, null, null, contactInfo);
+		        User newUser = new User(0, username, email, password, fullName, null, null, contactInfo);
 
 		        // Add the new user to the GuideAndSeek instance
 		        g.addUser(newUser);

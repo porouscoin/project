@@ -260,6 +260,11 @@ public class homepage extends JFrame {
 
         // Add Submit button
         JButton submitButton = new JButton("Submit");
+        submitButton.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		
+        	}
+        });
         submitButton.setBounds(217, 240, 100, 30);
         feedbackPanel.add(submitButton);
 

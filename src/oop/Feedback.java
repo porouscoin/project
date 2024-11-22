@@ -1,23 +1,43 @@
 package oop;
 
 public abstract class Feedback {
-    private String feedbackID;
+    private int feedbackID;
     private int rating;
+    private String review;
+    private int userID;
 
-    public Feedback(String feedbackID, int rating) {
+    public Feedback(int feedbackID, int rating, int userID, String review) {
         this.feedbackID = feedbackID;
         this.rating = rating;
+        this.userID = userID;
+        this.review = review;
     }
 
-    public String getFeedbackID() {
+    public int getFeedbackID() {
         return feedbackID;
     }
 
-    public void setFeedbackID(String feedbackID) {
+    public void setFeedbackID(int feedbackID) {
         this.feedbackID = feedbackID;
     }
 
-    public int getRating() {
+    public int getUserID() {
+		return userID;
+	}
+
+	public void setUserID(int userID) {
+		this.userID = userID;
+	}
+
+	public String getReview() {
+		return review;
+	}
+
+	public void setReview(String review) {
+		this.review = review;
+	}
+
+	public int getRating() {
         return rating;
     }
 
