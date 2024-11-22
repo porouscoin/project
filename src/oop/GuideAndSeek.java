@@ -29,29 +29,6 @@ public class GuideAndSeek {
     public void setDBHandler(DBHandler hnd) {
     	this.db = hnd;
     }
-    
-    public boolean login(String username, String password) {
-        ResultSet rs = null;
-        try {
-            // Fetch user record from the 'users' table by username
-            rs = db.fetch("user", "username", username);
-
-            if (rs != null && rs.next()) {
-                // Retrieve the stored password for the given username
-                String storedPassword = rs.getString("password");
-
-                // Compare the stored password with the entered password
-                if (storedPassword.equals(password)) {
-                    // If password matches, login is successful
-                    return true;
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        // If username doesn't exist or passwords don't match
-        return false;
-    }
 
     // Getters and setters
     public List<User> getUsers() {
@@ -97,6 +74,54 @@ public class GuideAndSeek {
     public void addUser(User u) {
     	db.save(u);
     }
+    
+    public boolean login(String username, String password) {
+        ResultSet rs = null;
+        try {
+            // Fetch user record from the 'users' table by username
+            rs = db.fetch("user", "username", username);
+
+            if (rs != null && rs.next()) {
+                // Retrieve the stored password for the given username
+                String storedPassword = rs.getString("password");
+
+                // Compare the stored password with the entered password
+                if (storedPassword.equals(password)) {
+                    // If password matches, login is successful
+                    return true;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        // If username doesn't exist or passwords don't match
+        return false;
+    }
+    
+    
+    public boolean loginAdmin(String username, String password) {
+        ResultSet rs = null;
+        try {
+            // Fetch user record from the 'users' table by username
+            rs = db.fetch("admins", "username", username);
+
+            if (rs != null && rs.next()) {
+                // Retrieve the stored password for the given username
+                String storedPassword = rs.getString("password");
+
+                // Compare the stored password with the entered password
+                if (storedPassword.equals(password)) {
+                    // If password matches, login is successful
+                    return true;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        // If username doesn't exist or passwords don't match
+        return false;
+    }
+    
     public boolean isUsernameOrEmailTaken(String username, String email) {
         try {
             // Check for duplicate username

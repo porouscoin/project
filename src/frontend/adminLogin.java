@@ -5,7 +5,12 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import oop.GuideAndSeek;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
@@ -71,8 +76,21 @@ public class adminLogin extends JFrame {
 		
 		JButton btnNewButton = new JButton("login");
 		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
+			 public void actionPerformed(ActionEvent e) {
+	                String username = textField.getText();
+	                String password = new String(passwordField.getPassword());
+
+	                // Use GuideAndSeek's login method to authenticate
+	                GuideAndSeek app = GuideAndSeek.getInstance();
+	                if (app.loginAdmin(username, password)) {
+	                    dispose(); // Close the login frame
+	                    homepage h1 = new homepage(); // Navigate to the homepage
+	                    h1.setVisible(true);
+	                } else {
+	                    // Show error if login fails
+	                    JOptionPane.showMessageDialog(null, "Invalid username or password.", "Login Failed", JOptionPane.ERROR_MESSAGE);
+	                }
+	            }
 		});
 		btnNewButton.setFont(new Font("Segoe UI Semibold", Font.BOLD, 17));
 		btnNewButton.setBounds(198, 272, 98, 27);
